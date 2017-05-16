@@ -1,3 +1,3 @@
-function Booking(){
-
+function Booking(user){
+  this.user = user
 };
