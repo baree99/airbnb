@@ -26,7 +26,12 @@ describe('Space', function(){
   describe('available dates', function() {
     it('should have an available date', function() {
       space.addAvailableDates("2017-01-01")
-      expect(space.availableDates).toContain(moment("2017-01-01"))
+      expect(space.availableDates).toContain("2017-01-01")
+    });
+
+    it('should have an available date', function() {
+      space.addAvailableDates("2017-01-01", "2017-01-08")
+      expect(space.availableDates.length).toEqual(8)
     });
   });
 

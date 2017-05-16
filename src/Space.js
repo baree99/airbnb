@@ -7,9 +7,14 @@ function Space(name, description, price) {
   this.availableDates = [];
 }
 
-Space.prototype.addAvailableDates = function(date) {
-  this.availableDates.push(moment(date));
-}
-
+Space.prototype.addAvailableDates = function(startDate, endDate) {
+  if (endDate === undefined ) { this.availableDates.push(moment(startDate).format('YYYY-MM-DD'))
+  } else {
+        endDate = moment(endDate).add(1, 'days')
+        for (var nextDateToAdd = moment(startDate); nextDateToAdd.isBefore(endDate); nextDateToAdd.add(1, 'days')) {
+          this.availableDates.push(nextDateToAdd.format('YYYY-MM-DD'));
+        }
+      }
+    }
 
 module.exports = Space;
