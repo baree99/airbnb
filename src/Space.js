@@ -8,13 +8,13 @@ function Space(name, description, price) {
 }
 
 Space.prototype.addAvailableDates = function(startDate, endDate) {
-  if (endDate === undefined ) { this.availableDates.push(moment(startDate).format('YYYY-MM-DD'))
+  if (endDate === undefined ) {
+    this.availableDates.push(moment(startDate).format('YYYY-MM-DD'))
   } else {
-        endDate = moment(endDate).add(1, 'days')
-        for (var nextDateToAdd = moment(startDate); nextDateToAdd.isBefore(endDate); nextDateToAdd.add(1, 'days')) {
-          this.availableDates.push(nextDateToAdd.format('YYYY-MM-DD'));
-        }
-      }
+    for (var nextDateToAdd = moment(startDate); nextDateToAdd.isSameOrBefore(endDate); nextDateToAdd.add(1, 'days')) {
+      this.availableDates.push(nextDateToAdd.format('YYYY-MM-DD'));
     }
+  }
+}
 
 module.exports = Space;
