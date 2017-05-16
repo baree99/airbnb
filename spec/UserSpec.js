@@ -1,9 +1,7 @@
 describe('User', function() {
 
   beforeEach(function() {
-    user = new User();
-    user.name = 'Ahmed';
-    user.email = 'ahmed@egypt.com';
+    user = new User('Ahmed', 'ahmed@egypt.com', '123456');
   });
 
   describe('User functionality', function() {
@@ -17,6 +15,10 @@ describe('User', function() {
 
     it('has an email', function() {
       expect(user.email).toBe('ahmed@egypt.com');
+    });
+
+    it('has a password', function() {
+      expect(user.password).toBe('123456');
     });
   });
 });
