@@ -1,24 +1,18 @@
-describe('User', function() {
+var UserModel = require('../src/User');
+var mongoose = require('mongoose');
 
-  beforeEach(function() {
-    user = new User('Ahmed', 'ahmed@egypt.com', '123456');
-  });
+describe('Create an instance of UserModel', function() {
 
-  describe('User functionality', function() {
-    it('creates a new user', function() {
-      expect(user).toEqual(jasmine.any(User));
-    });
-
-    it('has a name', function() {
-      expect(user.name).toBe('Ahmed');
-    });
-
-    it('has an email', function() {
-      expect(user.email).toBe('ahmed@egypt.com');
-    });
-
-    it('has a password', function() {
-      expect(user.password).toBe('123456');
+  it('should save to the database', function() {
+    var userAhmed = new UserModel();
+    userAhmed.name = 'Nigel';
+    userAhmed.email = 'nigel@egypt.com';
+    userAhmed.password = '123456';
+    userAhmed.save(function(err) {
+      expect(err).toBeNull();
+      UserModel.find(function(err, result) {
+        expect(result[2].name).toBe('Nigel');
+      });
     });
   });
 });
