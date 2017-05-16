@@ -1,6 +1,8 @@
 describe('Space', function(){
-  var myDescription = 'A bunch of text that explains what my space is like.',
-  space;
+  var moment = require('moment');
+  var Space = require("../src/space");
+  var myDescription = 'A bunch of text that explains what my space is like.';
+  var space;
 
   beforeEach(function() {
     space = new Space('My Space', myDescription, 100);
@@ -19,7 +21,18 @@ describe('Space', function(){
     it('has a price', function (){
       expect(space.price).toEqual(100);
     })
-
   })
+
+  describe('available dates', function() {
+    it('should have an available date', function() {
+      space.addAvailableDates("2017-01-01")
+      expect(space.availableDates).toContain("2017-01-01")
+    });
+
+    it('should have an available date', function() {
+      space.addAvailableDates("2017-01-01", "2017-01-08")
+      expect(space.availableDates.length).toEqual(8)
+    });
+  });
 
 })
