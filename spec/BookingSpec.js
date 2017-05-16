@@ -21,4 +21,20 @@ describe('Booking', function(){
       expect(booking.date).toEqual(Date())
     });
   });
+
+  describe('approval', function(){
+    it('returns pending by default', function(){
+      expect(booking.approval).toBe('pending')
+    });
+
+    it('changes approval status to confirmed', function(){
+      booking.confirmBooking()
+      expect(booking.approval).toBe('confirmed')
+    });
+
+    it('changes approval status to rejected', function(){
+      booking.rejectBooking()
+      expect(booking.approval).toBe('rejected')
+    });
+  });
 });
