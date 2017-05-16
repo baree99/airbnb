@@ -1,7 +1,7 @@
 describe('Booking', function(){
 
   beforeEach(function(){
-    booking = new Booking('agent bond', 'barcelona', Date());
+    booking = new Booking("ObjectId('5919f09931e2984225b5911e'", 'barcelona', Date());
   });
 
   describe('Booking functionality', function(){
@@ -10,7 +10,7 @@ describe('Booking', function(){
     });
 
     it('has a user', function(){
-      expect(booking.user).toBe('agent bond')
+      expect(booking.user).toBe("ObjectId('5919f09931e2984225b5911e'")
     });
 
     it('has a space', function(){
