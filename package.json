@@ -18,5 +18,8 @@
   "homepage": "https://github.com/ffasolin/team_rocks_makersbnb#readme",
   "devDependencies": {
     "jasmine": "^2.6.0"
+  },
+  "dependencies": {
+    "express": "^4.15.2"
   }
 }

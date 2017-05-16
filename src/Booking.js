@@ -12,3 +12,5 @@ Booking.prototype.confirmBooking = function () {
 Booking.prototype.rejectBooking = function () {
   this.approval = 'rejected'
 };
+
+module.exports = Booking;

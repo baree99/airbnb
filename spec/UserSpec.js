@@ -1,6 +1,7 @@
 var UserModel = require('../src/User');
 var mongoose = require('mongoose');
 
+
 describe('Create an instance of UserModel', function() {
 
   // afterEach(function() {
@@ -8,6 +9,7 @@ describe('Create an instance of UserModel', function() {
   //     console.log('collection removed');
   //   });
   // });
+
 
   it('should save to the database', function() {
     var userAhmed = new UserModel();
