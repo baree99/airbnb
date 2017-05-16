@@ -1,22 +1,32 @@
-describe('User', function() {
+var UserModel = require('../src/User');
+var mongoose = require('mongoose');
 
-  beforeEach(function() {
-    var User = require("../src/user");
-    user = new User('Ahmed', 'ahmed@egypt.com', '123456');
-  });
 
-  describe('User functionality', function() {
+describe('Create an instance of UserModel', function() {
 
-    it('has a name', function() {
-      expect(user.name).toBe('Ahmed');
+  // afterEach(function() {
+  //   UserModel.remove({}, function(err) {
+  //     console.log('collection removed');
+  //   });
+  // });
+
+
+  it('should save to the database', function() {
+    var userAhmed = new UserModel();
+    userAhmed.name = 'Nigel';
+    userAhmed.email = 'nigel@egypt.com';
+    userAhmed.password = '123456';
+    userAhmed.save(function(err) {
+      expect(err).toBeNull();
+
     });
 
-    it('has an email', function() {
-      expect(user.email).toBe('ahmed@egypt.com');
-    });
+    it('jdjd', function() {
+      //UserModel.find(function(err, result) {
+      console.log(UserModel.findOne({'name': 'Nigel'}))
+        expect(db.usermodels.findOne({'name': 'Nigel'})).toBe('Nenn')
+        //expect(result.name).toBe('Ben');
 
-    it('has a password', function() {
-      expect(user.password).toBe('123456');
     });
   });
 });

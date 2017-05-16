@@ -1,7 +1,13 @@
-function User(name, email, password) {
-  this.name = name;
-  this.email = email;
-  this.password = password;
-};
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+mongoose.connect('mongodb://localhost/makersBnB')
 
-module.exports = User;
+var userSchema = new Schema({
+  name: String,
+  email: String,
+  password: String
+});
+
+var UserModel = mongoose.model('UserModel', userSchema);
+
+module.exports = UserModel;
