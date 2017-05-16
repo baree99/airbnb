@@ -1,8 +1,8 @@
-var spaceFile = require("../src/Space");
-
 describe('Space', function(){
-  var myDescription = 'A bunch of text that explains what my space is like.',
-  space;
+  var moment = require('moment');
+  var Space = require("../src/space");
+  var myDescription = 'A bunch of text that explains what my space is like.';
+  var space;
 
   beforeEach(function() {
     space = new Space('My Space', myDescription, 100);

@@ -1,4 +1,4 @@
-// var moment = require('moment');
+var moment = require('moment');
 
 function Space(name, description, price) {
   this.name = name
@@ -10,3 +10,6 @@ function Space(name, description, price) {
 Space.prototype.addAvailableDates = function(date) {
   this.availableDates.push(moment(date));
 }
+
+
+module.exports = Space;
