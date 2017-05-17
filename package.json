@@ -4,7 +4,7 @@
   "description": "MakersBnB",
   "main": "./src/Space.js",
   "scripts": {
-    "test": "jasmine ./spec/SpaceSpec.js"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",

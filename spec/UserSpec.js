@@ -1,8 +1,5 @@
-
 var UserModel = require('../src/User');
 var mongoose = require('mongoose');
-var MongoClient = require('mongodb').MongoClient;
-
 
 describe('Create an instance of UserModel', function() {
 
@@ -17,7 +14,7 @@ describe('Create an instance of UserModel', function() {
 
   it('should save to the database', function(done) {
     var testUser = new UserModel();
-    testUser.name = 'Try';
+    testUser.name = 'nigel';
     testUser.email = 'nigel@egypt.com';
     testUser.password = '123456';
     testUser.save(function(err) {
@@ -29,7 +26,10 @@ describe('Create an instance of UserModel', function() {
 
 
   it('can call back data', function(done) {
-      // DATABASE QUERY HERE
+
+    UserModel.find({name: 'nigel'}, function(err, names) {
       done()
+      console.log(names[0].name)
+    });
   });
 });
