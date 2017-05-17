@@ -4,8 +4,8 @@
   "description": "MakersBnB",
   "main": "./src/Space.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev": "nodemon ./app"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
