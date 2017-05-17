@@ -33,14 +33,7 @@ name: sess.name
 });
 });
 
+app.use(express.static(__dirname + '/views/pages'));
 app.listen(3000, function () {
   console.log(app.settings.env)
 });
-
-
-// var totalpoints = count;
-//  res.render('dashboard', {
-//  title: 'Dashboard',
-//  user: req.user,
-//  totalpoints: totalpoints});
-// });
