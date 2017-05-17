@@ -4,7 +4,8 @@
   "description": "MakersBnB",
   "main": "./src/Space.js",
   "scripts": {
-    "test": "jasmine ./spec/SpaceSpec.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "nodemon ./app"
   },
   "repository": {
     "type": "git",
@@ -17,15 +18,20 @@
   },
   "homepage": "https://github.com/ffasolin/team_rocks_makersbnb#readme",
   "devDependencies": {
-    "jasmine": "^2.6.0"
+    "jasmine": "^2.6.0",
+    "nodemon": "^1.11.0"
   },
   "dependencies": {
+    "body-parser": "^1.17.1",
+    "ejs": "^2.5.6",
     "express": "^4.15.2",
+    "express-session": "^1.15.2",
     "jasmine": "^2.6.0",
     "jasmine-node": "^1.14.5",
     "moment": "^2.18.1",
     "mongo": "^0.1.0",
     "mongodb": "^2.2.26",
-    "mongoose": "^4.9.9"
+    "mongoose": "^4.9.9",
+    "nodemon": "^1.11.0"
   }
 }
