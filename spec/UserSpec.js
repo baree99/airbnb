@@ -5,7 +5,7 @@ describe('Create an instance of UserModel', function() {
 
   beforeAll(function(done) {
     UserModel.remove({}, function(err) {
-      console.log('collection removed');
+      console.log('user collection removed');
       done();
     });
   });
