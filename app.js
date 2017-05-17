@@ -28,9 +28,19 @@ app.post('/signup', function(req, res) {
 
 app.get('/home', function(req, res) {
 sess = req.session
-res.render('pages/home');
+res.render('pages/home', {
+name: sess.name
+});
 });
 
 app.listen(3000, function () {
   console.log(app.settings.env)
 });
+
+
+// var totalpoints = count;
+//  res.render('dashboard', {
+//  title: 'Dashboard',
+//  user: req.user,
+//  totalpoints: totalpoints});
+// });
