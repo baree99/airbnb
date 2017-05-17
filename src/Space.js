@@ -6,7 +6,7 @@ var moment = require('moment');
 var spaceSchema = new Schema({
   name: String,
   description: String,
-  price: String,
+  price:  Number,
   availableDates: Array
 })
 spaceSchema.methods.addAvailableDates = function(startDate, endDate) {
@@ -20,14 +20,5 @@ spaceSchema.methods.addAvailableDates = function(startDate, endDate) {
 };
 
 var SpaceModel = mongoose.model('SpaceModel', spaceSchema);
-
-// function Space(name, description, price) {
-//   this.name = name
-//   this.description = description
-//   this.price = price
-//   this.availableDates = [];
-// }
-
-
 
 module.exports = SpaceModel;
