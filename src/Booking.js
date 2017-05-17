@@ -1,16 +1,22 @@
-function Booking(user, space, date){
-  this.user = user
-  this.space = space
-  this.date = date
-  this.approval = 'pending'
-};
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+mongoose.connect('mongodb://localhost/makersBnB')
 
-Booking.prototype.confirmBooking = function () {
+var bookingSchema = new Schema({
+  user: String,
+  space: String,
+  date: String,
+  approval: {type: String, default: 'pending'}
+})
+
+bookingSchema.methods.confirmBooking = function () {
   this.approval = 'confirmed'
 };
 
-Booking.prototype.rejectBooking = function () {
+bookingSchema.methods.rejectBooking = function () {
   this.approval = 'rejected'
 };
 
-module.exports = Booking;
+var BookingModel = mongoose.model('BookingModel', bookingSchema);
+
+module.exports = BookingModel;
