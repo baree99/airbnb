@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var bcrypt = require('bcryptjs');
 mongoose.connect('mongodb://localhost/makersBnB')
 
 var userSchema = new Schema({
@@ -20,4 +21,18 @@ function User(params) {
   });
 }
 
+userSchema.methods.authentication = function(emails, password) {
+  user.find({email: emails}, function(err, users) {
+    console.log(users[0].name)
+  });
+};
+
+//   UserModel.find( { 'email': email }, function(err, users) {
+//     // bcrypt.compareSync(password, users[0].password)
+//     console.log(password)
+//     console.log(users[0].password)
+//   }
+// }
+
 module.exports = UserModel;
+module.exports = mongoose.model('UserModel', userSchema);

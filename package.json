@@ -24,6 +24,7 @@
   "dependencies": {
     "angular": "^1.6.4",
     "angular-bridge": "^0.5.0",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.1",
     "bridge": "^0.1.1",
     "ejs": "^2.5.6",

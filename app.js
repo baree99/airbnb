@@ -4,6 +4,8 @@ var UserModel = require('./src/User');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var mongoose = require('mongoose');
+var User = require('./src/User');
+var bcrypt = require('bcryptjs');
 var sess;
 
 app.use(bodyParser.urlencoded({ extended: false}));
@@ -26,10 +28,21 @@ app.post('/signup', function(req, res) {
   var user = new UserModel();
   user.name = req.body.name
   user.email = req.body.email
-  user.password = req.body.password
+  user.password = bcrypt.hashSync(req.body.password, 8);
   user.save();
   res.redirect('/home')
 });
+
+app.get('/login', function(req, res) {
+  res.render('pages/login')
+})
+
+app.post('/login', function(req, res) {
+  // var user = new UserModel();
+  var userSchema = UserModel.schema
+  userSchema.authentication(req.body.email, req.body.password)
+  res.redirect('/home')
+})
 
 app.get('/home', function(req, res) {
 sess = req.session
