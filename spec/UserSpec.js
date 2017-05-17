@@ -1,7 +1,6 @@
 var UserModel = require('../src/User');
 var mongoose = require('mongoose');
 
-
 describe('Create an instance of UserModel', function() {
 
   beforeAll(function(done) {
@@ -22,7 +21,6 @@ describe('Create an instance of UserModel', function() {
     });
     done();
   });
-
 
   it('can call back data', function(done) {
     UserModel.find({'name': 'Nigel'}, function(err, users) {
