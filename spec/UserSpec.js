@@ -8,28 +8,25 @@ describe('Create an instance of UserModel', function() {
       console.log('collection removed');
       done();
     });
-
   });
 
 
   it('should save to the database', function(done) {
     var testUser = new UserModel();
-    testUser.name = 'nigel';
+    testUser.name = 'Nigel';
     testUser.email = 'nigel@egypt.com';
     testUser.password = '123456';
     testUser.save(function(err) {
       expect(err).toBeNull();
     });
-
     done();
   });
 
-
   it('can call back data', function(done) {
-
-    UserModel.find({name: 'nigel'}, function(err, names) {
-      done()
-      console.log(names[0].name)
-    });
+    UserModel.find({'name': 'Nigel'}, function(err, users) {
+    if (err) throw err;
+    done()
+    expect(users[0].name).toBe('Nigel')
   });
+});
 });

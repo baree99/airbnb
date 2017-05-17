@@ -2,7 +2,6 @@ describe('Space', function(){
   var moment = require('moment');
   var SpaceModel = require("../src/space");
   var myDescription = 'A bunch of text that explains what my space is like.';
-  // var spaceTest;
 
   beforeEach(function(done) {
     SpaceModel.remove({}, function(err){
@@ -40,11 +39,19 @@ describe('Space', function(){
 
     it('should have multiple available dates', function(done) {
       spaceTest.addAvailableDates("2017-01-02", "2017-01-08")
-      spaceTest.save(function(err){
-      });
+      spaceTest.save();
       expect(spaceTest.availableDates.length).toEqual(8)
-
       done()
+    });
+
+    it('filters space by available dates', function(done){
+      SpaceModel.find({name: 'new house' }, function(err, spaces) {
+        console.log(spaces)
+        expect(spaces[0].name).toBe('new house')
+        done();
+      });
+
+
     });
   });
 
