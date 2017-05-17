@@ -6,7 +6,7 @@ var moment = require('moment');
 var spaceSchema = new Schema({
   name: String,
   description: String,
-  price:  Number,
+  price: Number,
   availableDates: Array
 })
 spaceSchema.methods.addAvailableDates = function(startDate, endDate) {
