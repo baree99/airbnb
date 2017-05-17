@@ -1,8 +1,9 @@
 var express = require('express');
 var app = express();
-var User = require('./src/User');
+var UserModel = require('./src/User');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var mongoose = require('mongoose');
 var sess;
 
 app.use(bodyParser.urlencoded({ extended: false}));
@@ -22,8 +23,12 @@ app.get('/', function (req, res) {
 app.post('/signup', function(req, res) {
   sess = req.session
   sess.name = req.body.name;
+  var user = new UserModel();
+  user.name = req.body.name
+  user.email = req.body.email
+  user.password = req.body.password
+  user.save();
   res.redirect('/home')
-
 });
 
 app.get('/home', function(req, res) {
