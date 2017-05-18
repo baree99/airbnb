@@ -4,7 +4,7 @@
   "description": "MakersBnB",
   "main": "./src/Space.js",
   "scripts": {
-    "start": "./app",
+    "start": "app.js",
     "start:dev": "nodemon ./app",
     "test": "jasmine"
   },
