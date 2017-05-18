@@ -1,13 +1,26 @@
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+
+    <% include ../partials/head %>
+</head>
+
+<body class="container" ng-app="signUp" ng-controller="UserCreation">
+
+  <header>
+      <% include ../partials/header %>
+  </header>
+
 <main>
-    <div class="jumbotron">
-        <h1>Feel at home, anywhere</h1>
+    <div>
+      <h1>RocksBnB - feel at home, anywhere</h1>
         <p>Login to RocksBnB</p>
     </div>
 
-    <form action="/login" id="loginform" class="loginform" method="post">
-      <input type="email" name="email" placeholder="Email address"><br>
-      <input type="password" name="password" placeholder="Password"><br>
-      <input type="submit" name="submit" value="Submit">
+    <form action="/login" id="loginform" class="signup-form" method="post">
+      <input class="signup-input" type="email" name="email" placeholder="Email address"><br>
+      <input class="signup-input" type="password" name="password" placeholder="Password"><br>
+      <input class="btn" type="submit" name="submit" value="Submit">
     </form>
 
 </main>
