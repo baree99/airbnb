@@ -1,7 +1,12 @@
+process.env.NODE_ENV = 'test'
 var moment = require('moment');
 var SpaceModel = require("../src/space");
 
 describe('Space', function(){
+
+  beforeEach(function(){
+    process.env.NODE_ENV='test'
+  });
 
   it('should have an available date', function() {
     var spaceTest = new SpaceModel();

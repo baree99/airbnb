@@ -1,3 +1,4 @@
+process.env.NODE_ENV = 'test'
 var UserModel = require('../src/User');
 var mongoose = require('mongoose');
 
