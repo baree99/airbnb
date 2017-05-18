@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
 var UserModel = require('./src/User');
-var Authentication = require('./src/Authentication')
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var mongoose = require('mongoose');
