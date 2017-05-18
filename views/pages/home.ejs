@@ -6,7 +6,7 @@
 
     <% include ../partials/head %>
 </head>
-<body class="container">
+<body class="container" ng-app="signUp" ng-controller="UserCreation">
 
     <header>
         <% include ../partials/header %>
@@ -19,7 +19,16 @@
             <p><%=name%></p>
         </div>
 
+        <form action="/newspace" id="newspace" class="newspace" method="post">
+          <input type="submit" value="New Space"><br>
+        </form>
+
     </main>
+
+      <div>
+        What is this {{test}}
+      </div>
+
 
     <footer>
         <% include ../partials/footer %>

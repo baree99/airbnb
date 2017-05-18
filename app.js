@@ -1,10 +1,12 @@
 var express = require('express');
 var app = express();
 var UserModel = require('./src/User');
+var SpaceModel = require("./src/Space");
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
+var GetSpace = require('./src/getsSpaces')
 var sess;
 
 app.use(bodyParser.urlencoded({ extended: false}));
@@ -18,7 +20,9 @@ app.use(session({
 app.set('view engine', 'ejs');
 
 app.get('/', function (req, res) {
-  res.render('pages/signup');
+  res.render('pages/signup', {
+    space: GetSpace()
+  });
 });
 
 app.post('/signup', function(req, res) {
@@ -30,6 +34,7 @@ app.post('/signup', function(req, res) {
   user.password = req.body.password
   // user.password = bcrypt.hashSync(req.body.password, 8);
   user.save();
+  sess.id = GetUser(req.body.email);
   res.redirect('/home')
 });
 
@@ -38,6 +43,7 @@ app.get('/login', function(req, res) {
 })
 
 app.post('/login', function(req, res) {
+
   var email = req.body.email
   var password = req.body.password
   UserModel.find({email: email}, function(err, users) {
@@ -52,6 +58,23 @@ app.get('/home', function(req, res) {
     name: sess.name
   });
 });
+
+app.post('/newspace', function(req, res) {
+  sess = req.session
+  res.render("pages/newspace")
+})
+
+app.post('/newspace/save', function(req, res){
+  sess = req.session
+  var newSpace = new SpaceModel();
+  newSpace.name = req.body.spacename
+  newSpace.description = req.body.description
+  newSpace.price = req.body.price
+  newSpace.addAvailableDates(req.body.startdate, req.body.enddate)
+  newSpace.ownerId = sess.id
+  newSpace.save();
+  res.redirect('/home')
+})
 
 app.use(express.static(__dirname + '/views/pages'));
 
