@@ -8,6 +8,7 @@ var mongoose = require('mongoose');
 var User = require('./src/User');
 var GetUser = require('./src/getUserData');
 var bcrypt = require('bcryptjs');
+var GetSpace = require('./src/getsSpaces')
 var sess;
 
 app.use(bodyParser.urlencoded({ extended: false}));
@@ -21,7 +22,9 @@ app.use(session({
 app.set('view engine', 'ejs');
 
 app.get('/', function (req, res) {
-  res.render('pages/signup');
+  res.render('pages/signup', {
+    space: GetSpace()
+  });
 });
 
 app.post('/signup', function(req, res) {

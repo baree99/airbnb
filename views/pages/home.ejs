@@ -3,7 +3,7 @@
 <head>
     <% include ../partials/head %>
 </head>
-<body class="container">
+<body class="container" ng-app="signUp" ng-controller="UserCreation">
 
     <header>
         <% include ../partials/header %>
@@ -21,6 +21,11 @@
         </form>
 
     </main>
+
+      <div>
+        What is this {{test}}
+      </div>
+
 
     <footer>
         <% include ../partials/footer %>
