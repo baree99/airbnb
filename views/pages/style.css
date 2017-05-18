@@ -1,0 +1,43 @@
+body {
+    font-family: 'Lato', Calibri, Arial, sans-serif;
+    color: #465870;
+    background: #fff;
+    font-size: 100%;
+    text-align: center;
+  }
+
+  .btn {
+      background-color: white;
+      color: black;
+      border: 2px solid #465870;
+      width: 250px;
+      font-size: 120%;
+      margin: 10px 0 0 0;
+  }
+
+  .btn:hover {
+      background-color: #465870;
+      color: white;
+  }
+
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 300%;
+  background-color: #465870;
+  color: white;
+  padding: 15px 0px 20px 0px;
+
+}
+
+.signup-form {
+  background-color: #abb9d1;
+  width: 280px;
+  margin: auto;
+  padding: 15px 30px 15px 30px;
+}
+
+.signup-input {
+  margin: 5px 0px 5px 0px;
+  width: 250px;
+  font-size: 100%;
+}

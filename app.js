@@ -5,8 +5,6 @@ var SpaceModel = require("./src/Space");
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var mongoose = require('mongoose');
-var User = require('./src/User');
-var GetUser = require('./src/getUserData');
 var bcrypt = require('bcryptjs');
 var GetSpace = require('./src/getsSpaces')
 var sess;
@@ -33,7 +31,8 @@ app.post('/signup', function(req, res) {
   var user = new UserModel();
   user.name = req.body.name
   user.email = req.body.email
-  user.password = bcrypt.hashSync(req.body.password, 8);
+  user.password = req.body.password
+  // user.password = bcrypt.hashSync(req.body.password, 8);
   user.save();
   sess.id = GetUser(req.body.email);
   res.redirect('/home')
@@ -44,15 +43,20 @@ app.get('/login', function(req, res) {
 })
 
 app.post('/login', function(req, res) {
-  userSchema.authentication(req.body.email, req.body.password)
-  res.redirect('/home')
-})
+
+  var email = req.body.email
+  var password = req.body.password
+  UserModel.find({email: email}, function(err, users) {
+    if (password !== users[0].password) { res.send('Incorrect password') };
+    if (password == users[0].password) { res.redirect('/home') };
+  });
+});
 
 app.get('/home', function(req, res) {
-sess = req.session
-res.render('pages/home', {
-name: sess.name
-});
+  sess = req.session
+  res.render('pages/home', {
+    name: sess.name
+  });
 });
 
 app.post('/newspace', function(req, res) {
@@ -73,6 +77,9 @@ app.post('/newspace/save', function(req, res){
 })
 
 app.use(express.static(__dirname + '/views/pages'));
-app.listen(3000, function () {
-  console.log(app.settings.env)
+
+var port = process.env.PORT || 3000
+app.listen(port, function () {
+console.log('running on port ' + port)
+console.log(process.env.NODE_ENV)
 });
