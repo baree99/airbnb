@@ -27,9 +27,9 @@ app.post('/signup', function(req, res) {
   var user = new UserModel();
   user.name = req.body.name
   user.email = req.body.email
-  user.password = req.body.password
-  // user.password = bcrypt.hashSync(req.body.password, 8);
+  user.password = bcrypt.hashSync(req.body.password, 10);
   user.save();
+  sess.userId = user._id
   res.redirect('/home')
 });
 
@@ -38,11 +38,17 @@ app.get('/login', function(req, res) {
 })
 
 app.post('/login', function(req, res) {
+  sess = req.session
   var email = req.body.email
   var password = req.body.password
   UserModel.find({email: email}, function(err, users) {
-    if (password !== users[0].password) { res.send('Incorrect password') };
-    if (password == users[0].password) { res.redirect('/home') };
+    if (bcrypt.compareSync(password, users[0].password)) {
+      sess.userId = users[0]._id
+      res.redirect('/home')
+    }else{
+      // some message about incorrect password
+      res.redirect('/login')
+    }
   });
 });
 
