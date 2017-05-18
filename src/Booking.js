@@ -3,8 +3,8 @@ var Schema = mongoose.Schema;
 mongoose.connect('mongodb://localhost/makersBnB')
 
 var bookingSchema = new Schema({
-  user: String,
-  space: String,
+  userId: String,
+  spaceId: String,
   date: String,
   approval: {type: String, default: 'pending'}
 })
