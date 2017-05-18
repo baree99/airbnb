@@ -21,11 +21,6 @@ function User(params) {
   });
 };
 
-userSchema.methods.authentication = function(emails, password) {
-  user.find({email: emails}, function(err, users) {
-    console.log(users[0].name)
-  });
-};
 
 // module.exports = UserModel;
 var UserModel = mongoose.model('UserModel', userSchema);

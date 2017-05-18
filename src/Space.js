@@ -7,7 +7,8 @@ var spaceSchema = new Schema({
   name: String,
   description: String,
   price: Number,
-  availableDates: Array
+  availableDates: Array,
+  ownerId: String
 })
 spaceSchema.methods.addAvailableDates = function(startDate, endDate) {
   if (endDate === undefined ) {
@@ -18,6 +19,11 @@ spaceSchema.methods.addAvailableDates = function(startDate, endDate) {
     };
   };
 };
+
+// spaceSchema.methods.getId = function(email) {
+//   UserModel.find({'email': email}, function(err, users)
+//   (users[0].name).toBe('Nigel')
+// };
 
 var SpaceModel = mongoose.model('SpaceModel', spaceSchema);
 
