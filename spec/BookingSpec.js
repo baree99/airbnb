@@ -1,45 +1,43 @@
 var BookingModel = require("../src/booking");
 
-beforeAll(function(done) {
-  BookingModel.remove({}, function(err){
-    console.log('booking collection removed')
-    done();
-  });
-});
-
 describe('Booking', function(){
 
-var bookingTest = new BookingModel();
-bookingTest.user = 'TestyMcTestFace'
-bookingTest.space = 'SpaceMcSpacePlace'
-bookingTest.date = '2017-05-17'
-bookingTest.save(function(err){
-  expect(err).toBeNull();
-});
-
-    it('has a user', function(){
-      expect(bookingTest.user).toBe('TestyMcTestFace')
+  beforeAll(function(done) {
+    BookingModel.remove({}, function(err){
     });
-
-    it('has a space', function(){
-      expect(bookingTest.space).toBe('SpaceMcSpacePlace')
-    });
-
-    it('has a date', function(){
-      expect(bookingTest.date).toEqual('2017-05-17')
-    });
-
-    it('returns pending by default', function(){
-      expect(bookingTest.approval).toBe('pending')
-    });
-
-    it('changes approval status to confirmed', function(){
-      bookingTest.confirmBooking()
-      expect(bookingTest.approval).toBe('confirmed')
-    });
-
-    it('changes approval status to rejected', function(){
-      bookingTest.rejectBooking()
-      expect(bookingTest.approval).toBe('rejected')
+    var bookingTest = new BookingModel();
+    bookingTest.userId = 'ACB12345'
+    bookingTest.spaceId = 'XYZ98765'
+    bookingTest.date = '2017-05-17'
+    bookingTest.save(function(err){
+      done()
     });
   });
+
+  it('should save to the database', function(done) {
+    BookingModel.find({ 'spaceId' : 'XYZ98765' }, function(err, bookings) {
+      expect(bookings[0].userId).toBe('ACB12345')
+      expect(bookings[0].spaceId).toBe('XYZ98765')
+      expect(bookings[0].date).toBe('2017-05-17')
+      expect(bookings[0].approval).toBe('pending')
+      done();
+    });
+  });
+
+  it('booking approval', function(done) {
+    BookingModel.find({ 'spaceId' : 'XYZ98765' }, function(err, bookings) {
+      bookings[0].confirmBooking()
+      expect(bookings[0].approval).toBe('confirmed')
+      done();
+    });
+  });
+
+  it('booking rejection', function(done) {
+    BookingModel.find({ 'spaceId' : 'XYZ98765' }, function(err, bookings) {
+      bookings[0].rejectBooking()
+      expect(bookings[0].approval).toBe('rejected')
+      done();
+    });
+  });
+
+});

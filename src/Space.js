@@ -7,7 +7,8 @@ var spaceSchema = new Schema({
   name: String,
   description: String,
   price: Number,
-  availableDates: Array
+  availableDates: Array,
+  ownerId: String
 })
 spaceSchema.methods.addAvailableDates = function(startDate, endDate) {
   if (endDate === undefined ) {
