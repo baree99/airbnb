@@ -27,15 +27,18 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.1",
     "bridge": "^0.1.1",
+    "chai": "^3.5.0",
     "ejs": "^2.5.6",
     "express": "^4.15.2",
     "express-session": "^1.15.2",
     "jasmine": "^2.6.0",
     "jasmine-node": "^1.14.5",
+    "mocha": "^3.4.1",
     "moment": "^2.18.1",
     "mongo": "^0.1.0",
     "mongodb": "^2.2.26",
     "mongoose": "^4.9.9",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "zombie": "^5.0.5"
   }
 }

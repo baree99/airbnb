@@ -38,8 +38,6 @@ app.get('/login', function(req, res) {
 })
 
 app.post('/login', function(req, res) {
-  // var user = new UserModel();
-  var userSchema = UserModel.schema
   userSchema.authentication(req.body.email, req.body.password)
   res.redirect('/home')
 })

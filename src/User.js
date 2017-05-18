@@ -9,7 +9,7 @@ var userSchema = new Schema({
   password: String
 });
 
-var UserModel = mongoose.model('UserModel', userSchema);
+
 
 function User(params) {
   var testUser = new UserModel();
@@ -19,7 +19,7 @@ function User(params) {
   testUser.save(function(err) {
     expect(err).toBeNull();
   });
-}
+};
 
 userSchema.methods.authentication = function(emails, password) {
   user.find({email: emails}, function(err, users) {
@@ -27,12 +27,6 @@ userSchema.methods.authentication = function(emails, password) {
   });
 };
 
-//   UserModel.find( { 'email': email }, function(err, users) {
-//     // bcrypt.compareSync(password, users[0].password)
-//     console.log(password)
-//     console.log(users[0].password)
-//   }
-// }
-
-module.exports = UserModel;
+// module.exports = UserModel;
+var UserModel = mongoose.model('UserModel', userSchema);
 module.exports = mongoose.model('UserModel', userSchema);
