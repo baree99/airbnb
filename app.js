@@ -55,5 +55,6 @@ app.use(express.static(__dirname + '/views/pages'));
 
 var port = process.env.PORT || 3000
 app.listen(port, function () {
-  console.log(app.settings.env)
+console.log('running on port ' + port)
+console.log(process.env.NODE_ENV)
 });

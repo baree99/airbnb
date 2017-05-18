@@ -1,3 +1,4 @@
+process.env.NODE_ENV='test'
 var BookingModel = require("../src/booking");
 
 describe('Booking', function(){
