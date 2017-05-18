@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var UserModel = require('./src/User');
-var authenticate = require('./src/Authentication')
+var Authentication = require('./src/Authentication')
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var mongoose = require('mongoose');
@@ -41,15 +41,17 @@ app.get('/login', function(req, res) {
 app.post('/login', function(req, res) {
   var email = req.body.email
   var password = req.body.password
-  authentication(email, password)
-  res.redirect('/home')
-})
+  UserModel.find({email: email}, function(err, users) {
+    if (password !== users[0].password) { res.send('Incorrect password') };
+    if (password == users[0].password) { res.redirect('/home') };
+  });
+});
 
 app.get('/home', function(req, res) {
-sess = req.session
-res.render('pages/home', {
-name: sess.name
-});
+  sess = req.session
+  res.render('pages/home', {
+    name: sess.name
+  });
 });
 
 app.use(express.static(__dirname + '/views/pages'));
