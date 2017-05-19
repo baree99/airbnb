@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var app = require('../app.js')
 var expect = require('chai').expect
 var assert = require('assert');
-Browser.localhost('localhost', 3000);
+Browser.localhost('localhost', 4001);
 
 
 describe('New Space', function() {

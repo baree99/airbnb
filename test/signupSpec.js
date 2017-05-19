@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var app = require('../app.js')
 var expect = require('chai').expect
 var assert = require('assert');
-Browser.localhost('localhost', 3000);
+Browser.localhost('localhost', 4001);
 
 describe('User visits signup page', function() {
   const browser = new Browser();
@@ -25,7 +25,7 @@ describe('User visits signup page', function() {
       .fill('passwordConfirmation', 'tron21')
       .pressButton('Submit').then(function() {
         assert.ok(browser.success);
-        browser.assert.text('p', 'RocksBnB - feel at home, anywhere<')
+        browser.assert.text('p', 'Welcome back to RocksBnBtestUser')
       }).then(done, done);
     });
 
@@ -42,8 +42,16 @@ describe('User visits signup page', function() {
     });
   });
 
-    describe('Logout', function(){
-      it('logs out the user and returns to the home page', function(done){
+  describe('Logout', function(){
+    it('logs out the user and returns to the home page', function(done){
+      browser
+      .fill('name', 'testUser')
+      .fill('email', 'test3@test.com')
+      .fill('password', 'tron21')
+      .fill('passwordConfirmation', 'tron21')
+      .pressButton('Submit').then(function() {
+        assert.ok(browser.success);
+        browser.assert.text('p', 'Welcome back to RocksBnBtestUser')
         browser.pressButton('Sign out').then(function() {
           assert.ok(browser.success);
           browser.assert.text('p', 'Login to RocksBnB')
@@ -51,3 +59,4 @@ describe('User visits signup page', function() {
       });
     });
   });
+});
