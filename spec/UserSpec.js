@@ -9,7 +9,7 @@ describe('Create an instance of UserModel', function() {
       var testUser = new UserModel();
       testUser.name = 'Nigel';
       testUser.email = 'nigel@egypt.com';
-      //testUser.password = '123456';
+      testUser.password = '123456';
       testUser.save(function(err) {
         done();
       });
@@ -20,7 +20,7 @@ describe('Create an instance of UserModel', function() {
     UserModel.find({'name': 'Nigel' }, function(err, users) {
       expect(users[0].name).toBe('Nigel')
       expect(users[0].email).toBe('nigel@egypt.com')
-      //expect(users[0].password).not.toBe('123456')
+      //expect(users[0].password).not.toBe('123456') //bcrpyt
       done();
     });
   });
