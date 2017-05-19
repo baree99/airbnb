@@ -1,5 +1,5 @@
 var signup = angular.module('signUp', []);
-// var SpaceModel = require('../../src/getsSpaces')
+//var SpaceModel = require('../../src/getsSpaces')
 
 signup.controller('UserCreation', [
   '$scope',
