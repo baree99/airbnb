@@ -50,3 +50,22 @@ h1 {
   position: fixed;
   right: 8px;
 }
+
+.spacelisting {
+  border: 2px solid #465870;
+    width: 560px;
+    margin: auto;
+  background-color: #DDDAD0;
+}
+
+.book-me {
+  width: 560px;
+}
+
+.space-header {
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 200%;
+  background-color: #465870;
+  color: white;
+  padding: 0px 0px 0px 0px;
+}

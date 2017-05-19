@@ -27,16 +27,22 @@
         </div>
 
         <form action="/newspace" id="newspace" class="newspace" method="post">
-          <input type="submit" value="New Space"><br>
+          <input class="btn" type="submit" value="New Space"><br>
         </form>
 
     </main>
 
-      <div ng-repeat="item in data">
-        <br>
-        <li> {{item.name}} {{item.availableDates}} <button type="button">Book Me !</button>  </li>
-      </div>
-
+    <div ng-repeat="item in data">
+      <br>
+      <form action="/booking-request" method="post" class="spacelisting">
+        <p class="space-header"> {{item.name}} £{{item.price}} per night</p>
+        <input type="hidden" name="space" value="{{item._id}}">
+      <select name="dateselector" class="btn">
+        <option value="{{i}}" name="date" ng-repeat="i in item.availableDates">{{i}}</option>
+      </select>
+      <button class="btn book-me" type="submit">Book Me !</button>
+    </form>
+    </div>
 
     <footer>
         <% include ../partials/footer %>
