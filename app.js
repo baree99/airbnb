@@ -70,6 +70,17 @@ app.post('/newspace', function(req, res) {
   res.render("pages/newspace")
 })
 
+app.get('/test', function(req, res){
+  sess = req.session
+  SpaceModel.find({}, function(err, spaces){
+      res.json(spaces)
+  });
+});
+
+app.get('/testytest', function(req, res){
+  res.render('pages/test')
+});
+
 app.post('/newspace/save', function(req, res){
   sess = req.session
   var newSpace = new SpaceModel();
@@ -84,7 +95,7 @@ app.post('/newspace/save', function(req, res){
 
 app.use(express.static(__dirname + '/views/pages'));
 
-var port = process.env.PORT || 3000
+var port = process.env.PORT || 4001
 app.listen(port, function () {
 console.log('running on port ' + port)
 console.log(process.env.NODE_ENV)
