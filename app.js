@@ -6,12 +6,14 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
+var flash = require('connect-flash');
 var GetSpace = require('./src/getsSpaces')
 var GetUser = require('./src/getUserData')
 var sess;
 
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
+app.use(flash());
 app.use(session({
   secret: 'keyboard cat',
   resave: true,
@@ -22,11 +24,16 @@ app.set('view engine', 'ejs');
 
 app.get('/', function (req, res) {
   res.render('pages/signup', {
-    space: GetSpace()
+    space: GetSpace(),
+    message: req.flash('wrongPassword').join()
   });
 });
 
 app.post('/signup', function(req, res) {
+  if (req.body.password !== req.body.passwordConfirmation) {
+    req.flash('wrongPassword', "Your passwords did not match, please try again");
+    res.redirect('/')
+  }else{
   sess = req.session
   sess.name = req.body.name;
   var user = new UserModel();
@@ -37,6 +44,7 @@ app.post('/signup', function(req, res) {
   sess.userId = user._id
   //sess.id = GetUser(req.body.email);
   res.redirect('/home')
+}
 });
 
 app.get('/login', function(req, res) {
@@ -83,7 +91,7 @@ app.post('/newspace/save', function(req, res){
   newSpace.description = req.body.description
   newSpace.price = req.body.price
   newSpace.addAvailableDates(req.body.startdate, req.body.enddate)
-  newSpace.ownerId = sess.id
+  newSpace.ownerId = sess.userId
   newSpace.save();
   res.redirect('/home')
 })
