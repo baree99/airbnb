@@ -13,16 +13,23 @@ describe('Booking confirmation', function() {
   it('makes a booking', function(done) {
     browser.visit('/login').then(function() {
       browser
-      .fill('email', 'test@test.com')
+      .fill('email', 'test23@test.com')
       .fill('password', 'tron21')
       .pressButton('Submit').then(function() {
         browser.pressButton('Book Me !').then(function() {
         assert.ok(browser.success);
-        browser.assert.text('p', '')
-        });
-      }).then(done, done);
+        browser.assert.text('p', 'Thank you for your booking requestThe owner will respond to you shortly')
+        }).then(done, done);
+      });
     });
   });
 
-
-});
+  it('goes to requests', function(done) {
+    browser.visit('/home').then(function() {
+        browser.pressButton('request').then(function() {
+          assert.ok(browser.success);
+          browser.assert.text('p', 'Request for googleCampus on 2017-01-01')
+        }).then(done, done);
+      });
+    });
+  });

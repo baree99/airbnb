@@ -13,7 +13,7 @@
 
     <% include ../partials/signedinheader %>
 </head>
-<body class="container" ng-app="signUp" ng-controller="UserCreation">
+<body class="container" ng-app="signUp" ng-controller="Bookings">
 
     <header>
         <% include ../partials/header %>
@@ -22,13 +22,21 @@
     <main>
         <div>
           <h1>RocksBnB - feel at home, anywhere</h1>
-            <p>Requests</p>
+            <h2>Requests</h2>
+            <div ng-repeat="item in bookings">
+              <br>
+              <form action="/booking-approval" method="post" class="spacelisting">
+                <p class="space-header"> Request for {{item.spaceName}} on {{item.date}}</p>
+                <input type="hidden" name="bookingId" value="{{item._id}}">
+                <input type="hidden" name="spaceId" value="{{item.spaceId}}">
+                <input type="hidden" name="date" value="{{item.date}}">
+              <button class="btn book-me" type="submit">Approve</button>
+            </form>
+            </div>
         </div>
 
     </main>
 
-      <div>
-      </div>
 
 
     <footer>

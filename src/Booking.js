@@ -17,7 +17,9 @@ mongoose.connect(thisDB)
 var bookingSchema = new Schema({
   userId: String,
   spaceId: String,
+  spaceName: String,
   date: String,
+  ownerId: String,
   approval: {type: String, default: 'pending'}
 })
 

@@ -23,7 +23,7 @@ describe('User visits signup page', function() {
       .fill('passwordConfirmation', 'tron21')
       .pressButton('Submit').then(function() {
         assert.ok(browser.success);
-        browser.assert.text('p', 'Welcome back to RocksBnBtestUser')
+        browser.assert.text('h2', 'Welcome back to RocksBnB')
       }).then(done, done);
     });
 
@@ -49,7 +49,6 @@ describe('User visits signup page', function() {
       .fill('passwordConfirmation', 'tron21')
       .pressButton('Submit').then(function() {
         assert.ok(browser.success);
-        browser.assert.text('p', 'Welcome back to RocksBnBtestUser')
         browser.pressButton('Sign out').then(function() {
           assert.ok(browser.success);
           browser.assert.text('p', 'Login to RocksBnB')

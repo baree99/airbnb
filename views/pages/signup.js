@@ -12,3 +12,16 @@ var app = angular.module('signUp',[]);
           console.log('Error: ' + data);
       });
 });
+
+app.controller('Bookings', function($scope, $http) {
+
+    $scope.bookings = [];
+
+    var request = $http.get('/databaseQueryBookings');
+    request.success(function(bookings) {
+        $scope.bookings = bookings;
+    });
+    request.error(function(bookings){
+        console.log('Error: ' + bookings);
+    });
+});
