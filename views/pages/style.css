@@ -1,7 +1,9 @@
 body {
+
     font-family: 'Lato', Calibri, Arial, sans-serif;
     color: #465870;
-    background: #fff;
+    background-image: url("https://w-dog.net/wallpapers/0/72/496258887549226/sky-sea-rock-house.jpg");
+    background-size: 100%;
     font-size: 100%;
     text-align: center;
   }
@@ -68,4 +70,15 @@ h1 {
   background-color: #465870;
   color: white;
   padding: 0px 0px 0px 0px;
+}
+
+.add-space-fields {
+  margin: 5px 0px 5px 0px;
+  height: 50px;
+  width: 750px;
+  font-size: 100%;
+}
+
+.description {
+  height: 100px;
 }
