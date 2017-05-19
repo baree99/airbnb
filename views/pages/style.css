@@ -41,3 +41,12 @@ h1 {
   width: 250px;
   font-size: 100%;
 }
+
+.signed-in-header {
+  display: inline-block;
+}
+
+.header {
+  position: fixed;
+  right: 8px;
+}

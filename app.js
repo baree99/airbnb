@@ -82,6 +82,15 @@ app.post('/newspace/save', function(req, res){
   res.redirect('/home')
 })
 
+app.post('/requests', function(req, res) {
+  res.render('pages/requests')
+})
+
+app.post('/signout', function(req, res) {
+  req.session = undefined
+  res.redirect('/login')
+})
+
 app.use(express.static(__dirname + '/views/pages'));
 
 var port = process.env.PORT || 3000
