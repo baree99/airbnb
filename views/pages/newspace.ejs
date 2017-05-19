@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
   <script src="signup.js"></script>
   <script src="components/angular-complete/angular.js"
@@ -11,26 +12,28 @@
         type="text/javascript"></script>
   <link rel="stylesheet" href="style.css">
     <% include ../partials/signedinheader %>
+
 </head>
 <body class="container">
 
     <header>
+      <% include ../partials/signedinheader %>
         <% include ../partials/header %>
     </header>
 
     <main>
-        <div class="jumbotron">
+        <div>
             <h1>List a space</h1>
             <p></p>
         </div>
 
         <form action="/newspace/save" id="newspaceform" class="newspaceform" method="post">
-          <input type="text" name="spacename" placeholder="Space Name"><br>
-          <input type="text" name="description" placeholder="Description"><br>
-          <input type="number" name="price" placeholder="Price"><br>
-          <input type="date" name="startdate"><br>
-          <input type="date" name="enddate"><br>
-          <input type="submit" value="Submit"><br>
+          <input class="add-space-fields" type="text" name="spacename" placeholder="Space Name"><br>
+          <input class="add-space-fields description" type="text" name="description" placeholder="Description"><br>
+          <input class="add-space-fields" type="number" name="price" placeholder="Price"><br>
+          <input class="add-space-fields" type="date" name="startdate"><br>
+          <input class="add-space-fields" type="date" name="enddate"><br>
+          <input class="btn" type="submit" value="Submit"><br>
         </form>
 
     </main>

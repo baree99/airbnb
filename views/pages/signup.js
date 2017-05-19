@@ -25,3 +25,4 @@ app.controller('Bookings', function($scope, $http) {
         console.log('Error: ' + bookings);
     });
 });
+
