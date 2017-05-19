@@ -7,6 +7,7 @@ var session = require('express-session');
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 var GetSpace = require('./src/getsSpaces')
+var GetUser = require('./src/getUserData')
 var sess;
 
 app.use(bodyParser.urlencoded({ extended: false}));
