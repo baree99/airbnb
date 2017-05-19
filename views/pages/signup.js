@@ -4,7 +4,7 @@ var app = angular.module('signUp',[]);
 
       $scope.data = [];
 
-      var request = $http.get('/test');
+      var request = $http.get('/databaseQuery');
       request.success(function(data) {
           $scope.data = data;
       });

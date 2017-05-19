@@ -70,15 +70,10 @@ app.post('/newspace', function(req, res) {
   res.render("pages/newspace")
 })
 
-app.get('/test', function(req, res){
-  sess = req.session
+app.get('/databaseQuery', function(req, res){
   SpaceModel.find({}, function(err, spaces){
-      res.json(spaces)
+    res.json(spaces)
   });
-});
-
-app.get('/testytest', function(req, res){
-  res.render('pages/test')
 });
 
 app.post('/newspace/save', function(req, res){
