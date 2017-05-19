@@ -1,6 +1,4 @@
 const Browser = require('zombie');
-var UserModel = require('../src/User');
-var mongoose = require('mongoose');
 var app = require('../app.js')
 var expect = require('chai').expect
 var assert = require('assert');
