@@ -9,6 +9,7 @@ var bcrypt = require('bcryptjs');
 var flash = require('connect-flash');
 var GetSpace = require('./src/getsSpaces')
 var GetUser = require('./src/getUserData')
+var BookingModel = require("./src/Booking");
 var sess;
 
 app.use(bodyParser.urlencoded({ extended: false}));
@@ -72,6 +73,16 @@ app.get('/home', function(req, res) {
     name: sess.name
   });
 });
+
+app.post('/booking-request', function(req, res) {
+  sess = req.session
+  var newBooking = new BookingModel();
+  newBooking.userId = sess.userId
+  newBooking.spaceId = req.body.space
+  newBooking.date = req.body.dateselector
+  newBooking.save();
+  res.render("pages/thankyou")
+})
 
 app.post('/newspace', function(req, res) {
   sess = req.session
