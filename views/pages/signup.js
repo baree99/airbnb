@@ -13,30 +13,16 @@ var app = angular.module('signUp',[]);
       });
 });
 
-angular
-    .module('myApp', ['moment-picker'])
-    .config(['momentPickerProvider', function (momentPickerProvider) {
-        momentPickerProvider.options({
-            /* Picker properties */
-            locale:        'en',
-            format:        'L LTS',
-            minView:       'decade',
-            maxView:       'minute',
-            startView:     'year',
-            autoclose:     true,
-            today:         false,
-            keyboard:      false,
+app.controller('Bookings', function($scope, $http) {
 
-            /* Extra: Views properties */
-            leftArrow:     '&larr;',
-            rightArrow:    '&rarr;',
-            yearsFormat:   'YYYY',
-            monthsFormat:  'MMM',
-            daysFormat:    'D',
-            hoursFormat:   'HH:[00]',
-            minutesFormat: moment.localeData().longDateFormat('LT').replace(/[aA]/, ''),
-            secondsFormat: 'ss',
-            minutesStep:   5,
-            secondsStep:   1
-        });
-    }]);
+    $scope.bookings = [];
+
+    var request = $http.get('/databaseQueryBookings');
+    request.success(function(bookings) {
+        $scope.bookings = bookings;
+    });
+    request.error(function(bookings){
+        console.log('Error: ' + bookings);
+    });
+});
+

@@ -25,7 +25,7 @@
     <main>
         <div>
           <h1>RocksBnB - feel at home, anywhere</h1>
-            <p>Welcome back to RocksBnB</p>
+            <h2>Welcome back to RocksBnB</h2>
             <p><%=name%></p>
         </div>
 
@@ -40,6 +40,9 @@
       <form action="/booking-request" method="post" class="spacelisting">
         <p class="space-header"> {{item.name}} £{{item.price}} per night</p>
         <input type="hidden" name="space" value="{{item._id}}">
+        <input type="hidden" name="spaceName" value="{{item.name}}">
+        <input type="hidden" name="ownerId" value="{{item.ownerId}}">
+
       <select name="dateselector" class="btn">
         <option value="{{i}}" name="date" ng-repeat="i in item.availableDates">{{i}}</option>
       </select>

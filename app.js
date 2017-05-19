@@ -80,6 +80,8 @@ app.post('/booking-request', function(req, res) {
   newBooking.userId = sess.userId
   newBooking.spaceId = req.body.space
   newBooking.date = req.body.dateselector
+  newBooking.spaceName = req.body.spaceName
+  newBooking.ownerId = req.body.ownerId
   newBooking.save();
   res.render("pages/thankyou")
 })
@@ -95,6 +97,18 @@ app.get('/databaseQuery', function(req, res){
   });
 });
 
+app.get('/databaseQueryBookings', function(req, res){
+  BookingModel.find({ ownerId : req.session.userId , approval : 'pending' }, function(err, bookings){
+    res.json(bookings)
+  });
+});
+
+app.post('/booking-approval', function(req, res) {
+  BookingModel.update({ spaceId: req.body.spaceId , date: req.body.date}, { approval: 'rejected'}, { multi: true}).exec();
+    BookingModel.where({ _id: req.body.bookingId }).update({ $set: { approval: 'approved'}}).exec();
+  res.redirect('/requests');
+});
+
 app.post('/newspace/save', function(req, res){
   sess = req.session
   var newSpace = new SpaceModel();
@@ -107,7 +121,7 @@ app.post('/newspace/save', function(req, res){
   res.redirect('/home')
 })
 
-app.post('/requests', function(req, res) {
+app.get('/requests', function(req, res) {
   res.render('pages/requests')
 })
 

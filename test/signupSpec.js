@@ -1,11 +1,9 @@
 
 const Browser = require('zombie');
-var UserModel = require('../src/User');
-var mongoose = require('mongoose');
 var app = require('../app.js')
 var expect = require('chai').expect
 var assert = require('assert');
-Browser.localhost('localhost', 3000);
+Browser.localhost('localhost', 4001);
 
 describe('User visits signup page', function() {
   const browser = new Browser();
@@ -20,12 +18,12 @@ describe('User visits signup page', function() {
     it('should submit signup form', function(done){
       browser
       .fill('name', 'testUser')
-      .fill('email', 'test@test.com')
+      .fill('email', 'test23@test.com')
       .fill('password', 'tron21')
       .fill('passwordConfirmation', 'tron21')
       .pressButton('Submit').then(function() {
         assert.ok(browser.success);
-        browser.assert.text('p', 'RocksBnB - feel at home, anywhere<')
+        browser.assert.text('h2', 'Welcome back to RocksBnB')
       }).then(done, done);
     });
 
@@ -42,8 +40,15 @@ describe('User visits signup page', function() {
     });
   });
 
-    describe('Logout', function(){
-      it('logs out the user and returns to the home page', function(done){
+  describe('Logout', function(){
+    it('logs out the user and returns to the home page', function(done){
+      browser
+      .fill('name', 'testUser')
+      .fill('email', 'test3@test.com')
+      .fill('password', 'tron21')
+      .fill('passwordConfirmation', 'tron21')
+      .pressButton('Submit').then(function() {
+        assert.ok(browser.success);
         browser.pressButton('Sign out').then(function() {
           assert.ok(browser.success);
           browser.assert.text('p', 'Login to RocksBnB')
@@ -51,3 +56,4 @@ describe('User visits signup page', function() {
       });
     });
   });
+});
