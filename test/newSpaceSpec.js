@@ -13,8 +13,8 @@ describe('New Space', function() {
     browser.visit('/home', done);
   });
 
-  describe('posts a new space', function(){
     it("'New Space button' takes you to the add a new space page", function(done){
+
       browser
       .pressButton('New Space').then(function() {
         assert.ok(browser.success);
@@ -30,8 +30,7 @@ describe('New Space', function() {
         .fill('enddate', '06082017')
         .pressButton('Submit').then(function() {
           assert.ok(browser.success);
-          browser.assert.text('h1', 'Feel at home, anywhere')
+          browser.assert.text('h1', 'RocksBnB - feel at home, anywhere')
         }).then(done, done);
       });
-  });
 });
